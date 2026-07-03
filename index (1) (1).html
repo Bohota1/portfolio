@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairuz Lubana Binte Newaz — Software Engineer</title>
+<meta name="description" content="Portfolio of Fairuz Lubana Binte Newaz, Software Engineering student at IUT Dhaka.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#151b2b;
+    --ink-2:#1c2438;
+    --paper:#f7f6f2;
+    --card:#ffffff;
+    --cobalt:#2e4f9e;
+    --cobalt-soft:#5b74b0;
+    --brass:#a9835a;
+    --line:#e1ded4;
+    --line-dark:#2a3348;
+    --muted:#5b6472;
+    --muted-dark:#9aa1b4;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', system-ui, -apple-system, sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    --maxw:960px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); line-height:1.65; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--cobalt); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--cobalt); outline-offset:3px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--brass); margin:0 0 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::after{content:""; flex:1; height:1px; background:var(--line);}
+  section.contact .eyebrow::after{background:var(--line-dark);}
+
+  h2{
+    font-family:var(--serif); font-weight:600; font-size:2rem;
+    margin:0 0 30px; letter-spacing:-0.01em;
+  }
+
+  /* corner-tick motif -- precision / spec-sheet reference */
+  .tick{position:relative;}
+  .tick::before, .tick::after{
+    content:""; position:absolute; width:9px; height:9px;
+    border-top:1.5px solid var(--brass); border-left:1.5px solid var(--brass);
+    top:-1px; left:-1px;
+  }
+  .tick::after{
+    top:auto; left:auto; bottom:-1px; right:-1px;
+    border-top:none; border-left:none;
+    border-bottom:1.5px solid var(--brass); border-right:1.5px solid var(--brass);
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,246,242,0.9); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between; height:64px;
+  }
+  .nav-name{
+    font-family:var(--serif); font-size:1.05rem; font-weight:600; color:var(--ink);
+  }
+  .nav-links{display:flex; gap:26px; font-size:0.86rem;}
+  .nav-links a{color:var(--muted); font-weight:500;}
+  .nav-links a:hover{color:var(--cobalt); text-decoration:none;}
+  .nav-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:88px 0 64px;}
+  .hero-kicker{
+    font-family:var(--mono); font-size:0.78rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--cobalt); margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:600; font-size:3.4rem;
+    line-height:1.05; margin:0 0 18px; letter-spacing:-0.015em; max-width:14ch;
+  }
+  .hero-role{font-size:1.15rem; color:var(--muted); max-width:52ch; margin:0 0 36px;}
+
+  .spec-strip{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    margin-bottom:38px;
+  }
+  .spec-item{
+    padding:16px 20px 16px 0; border-right:1px solid var(--line);
+  }
+  .spec-item:last-child{border-right:none;}
+  .spec-label{
+    font-family:var(--mono); font-size:0.66rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); display:block; margin-bottom:6px;
+  }
+  .spec-value{font-weight:600; font-size:0.98rem;}
+
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-size:0.9rem; font-weight:600; padding:12px 22px; border-radius:2px;
+    display:inline-flex; align-items:center; gap:8px; border:1px solid var(--ink);
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--cobalt); border-color:var(--cobalt); text-decoration:none;}
+  .btn-ghost{color:var(--ink); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--ink); text-decoration:none;}
+
+  /* ---------- General sections ---------- */
+  section{padding:64px 0;}
+  .section-line{border-top:1px solid var(--line);}
+
+  .about p{max-width:66ch; color:var(--muted); font-size:1.04rem;}
+
+  /* Education */
+  .edu-item{
+    display:grid; grid-template-columns:1fr auto; gap:20px;
+    padding:24px 0; border-bottom:1px solid var(--line); align-items:baseline;
+  }
+  .edu-item:first-of-type{padding-top:0;}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-school{font-family:var(--serif); font-weight:600; font-size:1.2rem;}
+  .edu-deg{color:var(--muted); font-size:0.92rem; margin-top:4px;}
+  .edu-score{
+    font-family:var(--mono); font-size:0.85rem; color:var(--cobalt);
+    white-space:nowrap; text-align:right;
+  }
+
+  /* Projects */
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .proj-card{background:var(--card); padding:32px; position:relative;}
+  .proj-cat{
+    font-family:var(--mono); font-size:0.68rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--brass); margin-bottom:10px;
+  }
+  .proj-title{font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0 0 6px;}
+  .proj-status{
+    font-family:var(--mono); font-size:0.65rem; color:var(--cobalt);
+    border:1px solid var(--cobalt); border-radius:20px; padding:2px 9px;
+    display:inline-block; margin-bottom:12px;
+  }
+  .tech-row{color:var(--muted); font-size:0.82rem; margin:14px 0 16px; font-family:var(--mono);}
+  .proj-card ul{margin:0; padding:0; list-style:none;}
+  .proj-card li{
+    position:relative; padding-left:16px; margin-bottom:9px;
+    color:var(--muted); font-size:0.93rem;
+  }
+  .proj-card li::before{
+    content:""; position:absolute; left:0; top:9px; width:6px; height:1px; background:var(--brass);
+  }
+
+  /* Skills */
+  .skill-table{border-top:1px solid var(--line);}
+  .skill-row{
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:18px 0; border-bottom:1px solid var(--line);
+  }
+  .skill-key{
+    font-family:var(--mono); font-size:0.78rem; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--ink); font-weight:500;
+  }
+  .skill-val{color:var(--muted); font-size:0.95rem;}
+
+  /* Achievements */
+  .achv-row{display:flex; gap:56px; flex-wrap:wrap;}
+  .achv-num{font-family:var(--serif); font-weight:600; font-size:2.6rem; color:var(--cobalt); line-height:1;}
+  .achv-label{color:var(--muted); font-size:0.88rem; margin-top:8px; max-width:20ch;}
+
+  /* Contact */
+  .contact{background:var(--ink); color:var(--paper);}
+  .contact h2{color:var(--paper);}
+  .contact .eyebrow{color:var(--brass);}
+  .contact-intro{color:var(--muted-dark); max-width:50ch; margin:-14px 0 40px; font-size:1rem;}
+  .contact-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
+  .contact-card{
+    background:var(--ink-2); padding:22px 24px; display:flex; flex-direction:column; gap:6px;
+  }
+  .contact-card:hover{background:#232c44; text-decoration:none;}
+  .contact-label{font-family:var(--mono); font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted-dark);}
+  .contact-value{color:var(--paper); font-size:1rem; font-weight:500; word-break:break-word;}
+
+  footer{
+    text-align:center; padding:24px; font-family:var(--mono); font-size:0.72rem;
+    color:var(--muted-dark); background:var(--ink); border-top:1px solid var(--line-dark);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:760px){
+    .hero{padding:56px 0 44px;}
+    .hero h1{font-size:2.3rem; max-width:none;}
+    .hero-role{font-size:1.02rem;}
+    .spec-strip{grid-template-columns:repeat(2,1fr);}
+    .spec-item{border-bottom:1px solid var(--line);}
+    .spec-item:nth-child(2n){border-right:none;}
+    .proj-grid{grid-template-columns:1fr;}
+    .skill-row{grid-template-columns:1fr;}
+    .skill-key{margin-bottom:2px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    h2{font-size:1.6rem;}
+    section{padding:48px 0;}
+    .achv-row{gap:36px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <span class="nav-name">Fairuz Newaz</span>
+    <div class="nav-links">
+      <a href="#about">Profile</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-kicker">Portfolio — 2026</p>
+    <h1>Fairuz Lubana Binte Newaz</h1>
+    <p class="hero-role">Software Engineering student building across full-stack platforms and systems-level software — from operating system internals to production-style web applications.</p>
+
+    <div class="spec-strip">
+      <div class="spec-item">
+        <span class="spec-label">Institution</span>
+        <span class="spec-value">IUT, Dhaka</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Program</span>
+        <span class="spec-value">B.Sc. Software Eng.</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Graduation</span>
+        <span class="spec-value">Oct 2027</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-label">Location</span>
+        <span class="spec-value">Dhaka, Bangladesh</span>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+
+<a class="btn btn-primary"
+href="assets/FAIRUZ LUBANA BINTE NEWAZ resume.pdf"
+target="_blank">
+Download Resume
+</a>
+
+<a class="btn btn-ghost"
+href="#projects">
+Projects
+</a>
+
+<a class="btn btn-ghost"
+href="#contact">
+Contact
+</a>
+
+<a class="btn btn-ghost"
+href="https://github.com/Bohota1"
+target="_blank">
+GitHub ↗
+</a>
+
+</div>
+</section>
+
+<section id="about" class="section-line about">
+    <div class="wrap">
+
+        <p class="eyebrow">Profile</p>
+
+        <h2>About Me</h2>
+
+        <p>
+           Interested in  Backend Developeing and passionate about building scalable web applications using Laravel, PHP, MySQL, and REST APIs. Experienced in developing full-stack applications, integrating APIs, and solving real-world problems through academic and personal projects. Seeking internship opportunities to expand my skills and contribute to impactful software solutions.
+        </p>
+
+    </div>
+</section>
+
+<section id="education" class="section-line">
+  <div class="wrap">
+    <p class="eyebrow">Education</p>
+    <h2>Academic Background</h2>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-school">Islamic University of Technology (IUT)</div>
+        <div class="edu-deg">B.Sc. in Software Engineering — Expected graduation October 2027</div>
+      </div>
+      <div class="edu-score">CGPA&nbsp;3.07</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-school">Rajuk Uttara Model College</div>
+        <div class="edu-deg">Higher Secondary Certificate — 2022</div>
+      </div>
+      <div class="edu-score">GPA&nbsp;5.00</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-school">Rajuk Uttara Model College</div>
+        <div class="edu-deg">Secondary School Certificate — 2020</div>
+      </div>
+      <div class="edu-score">GPA&nbsp;5.00</div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section-line">
+  <div class="wrap">
+    <p class="eyebrow">Selected Work</p>
+    <h2>Projects</h2>
+  </div>
+  <div class="wrap">
+    <div class="proj-grid tick">
+
+      <div class="proj-card">
+        <div class="proj-cat">Full-Stack · LMS</div>
+        <div class="proj-title">Edvantage</div>
+        <div class="tech-row">Laravel · PHP · JavaScript · MySQL · WebRTC</div>
+        <ul>
+          <li>Discussion forums, assignment management, and course recommendation features.</li>
+          <li>Live class integration via WebRTC — video, audio, screen sharing, session recording.</li>
+          <li>Proctored online exams with webcam and screen-recording monitoring.</li>
+          <li>AI chatbot integration for platform assistance and document-based Q&A.</li>
+        </ul>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-cat">Full-Stack · MERN</div>
+        <div class="proj-title">CollabHive</div>
+        <span class="proj-status">In progress</span>
+        <div class="tech-row">React · Node.js · Express.js · MongoDB · JWT</div>
+        <ul>
+          <li>Team collaboration platform with secure JWT-based authentication.</li>
+          <li>Responsive React interfaces with protected routes and Axios-driven API integration.</li>
+          <li>RESTful APIs built with Express.js and MongoDB for data and backend operations.</li>
+          <li>Modular client-server architecture for scalability and maintainability.</li>
+        </ul>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-cat">Systems · Operating Systems</div>
+        <div class="proj-title">UNIX Shell for mCertiKOS</div>
+        <div class="tech-row">C · QEMU · Git</div>
+        <ul>
+          <li>UNIX-style shell extending mCertiKOS with pipelines, I/O redirection, and process management.</li>
+          <li>File descriptor abstraction and kernel-level pipe communication for inter-process data transfer.</li>
+          <li>Command parsing and execution logic for multi-stage pipelines and filesystem operations.</li>
+          <li>Worked with system calls, process spawning, memory management, and filesystem internals.</li>
+        </ul>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-cat">Application · Java</div>
+        <div class="proj-title">FitHub</div>
+        <div class="tech-row">Java · OOP · Git</div>
+        <ul>
+          <li>Gym management platform for registration, trainer management, and class scheduling.</li>
+          <li>Object-oriented design modeling business processes and system components.</li>
+          <li>Progress tracking and reporting to monitor member activity and performance.</li>
+          <li>Team-based development workflow using Git for version control.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section-line">
+  <div class="wrap">
+    <p class="eyebrow">Capabilities</p>
+    <h2>Technical Skills</h2>
+    <div class="skill-table">
+      <div class="skill-row">
+        <span class="skill-key">Languages</span>
+        <span class="skill-val">C, C++, Java, Python, JavaScript, PHP, SQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-key">Frameworks &amp; Tech</span>
+        <span class="skill-val">Laravel, Blade, REST APIs, WebRTC, OCR, AI Chatbot Integration</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-key">Databases</span>
+        <span class="skill-val">MySQL, Database Design, SQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-key">Software Engineering</span>
+        <span class="skill-val">OOP, Data Structures &amp; Algorithms, Operating Systems, MVC Architecture, Authentication &amp; Authorization</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-key">Tools</span>
+        <span class="skill-val">Git, GitHub, VS Code, IntelliJ IDEA, QEMU</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-line">
+  <div class="wrap">
+    <p class="eyebrow">Achievements</p>
+    <h2>Track Record</h2>
+    <div class="achv-row">
+      <div>
+        <div class="achv-num">100</div>
+        <div class="achv-label">Programming problems solved on Codeforces</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's Work Together</h2>
+    <p class="contact-intro">Open to internships, collaborative projects, and opportunities to build software that matters.</p>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:fairuznewaz@iut-dhaka.edu">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">fairuznewaz@iut-dhaka.edu</span>
+      </a>
+      <a class="contact-card" href="tel:+8801796855172">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">+880 1796 855172</span>
+      </a>
+      <a class="contact-card" href="https://linkedin.com/in/fairuz-lubana-1804a9383/" target="_blank" rel="noopener">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">/in/fairuz-lubana-1804a9383</span>
+      </a>
+      <a class="contact-card" href="https://github.com/Bohota1" target="_blank" rel="noopener">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">@Bohota1</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Dhaka, Bangladesh
+</footer>
+
+</body>
+</html>
